@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ui';
+  title = 'HelloAngular';
+
+  name: string = ''
+  names: string[] = []
+
+  addName(name: string): void {
+    this.names.push(name)
+  }
+
+
+
 }
