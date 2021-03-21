@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
+
+import { Person } from '../app/person'
 
 @Component({
   selector: 'app-root',
@@ -8,13 +11,20 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'HelloAngular';
 
-  name: string = ''
-  names: string[] = []
-
-  addName(name: string): void {
-    this.names.push(name)
+  person: Person = {
+    name: '',
+    age:  null
   }
+  msg:   string
+  msgs:  string[] = []
 
+  constructor(private appService: AppService) { }
 
+  public addName(person: Person): void {
+    this.appService.getMessage(person).subscribe((data: any) => {
+      this.msg = data.content
+      this.msgs.push(this.msg)
+    })
+  }
 
 }

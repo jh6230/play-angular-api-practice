@@ -1,5 +1,8 @@
 <h1>ようこそ Angularへ</h1>
-<input type="text" [(ngModel)]="name" >
-<button (click)="addName(name)">追加</button>
+<input type="text"   [(ngModel)]="person.name">
+<input type="number" [(ngModel)]="person.age">
 
-<p *ngFor="let name of names">{{ name }}</p>
+<button (click)="addName(person)">追加</button>
+
+
+<p *ngFor="let msg of msgs">{{ msg }}</p>
