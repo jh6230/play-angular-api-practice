@@ -1,8 +1,14 @@
 <h1>ようこそ Angularへ</h1>
-<input type="text"   [(ngModel)]="person.name">
-<input type="number" [(ngModel)]="person.age">
+<div>
+  <input type="text" [(ngModel)]="person.name">
+  <input type="number" [(ngModel)]="person.age">
+  <button (click)="addName(person)">追加</button>
+</div>
 
-<button (click)="addName(person)">追加</button>
-
+<div>
+  <input type="text" [(ngModel)]="zipcode" placeholder="郵便番号を入力して下さい">
+  <button (click)="getAddress(zipcode)">検索</button>
+  <p>{{ address }}</p>
+</div>
 
 <p *ngFor="let msg of msgs">{{ msg }}</p>
