@@ -4,7 +4,7 @@ import { map  } from 'rxjs/operators'
 import { Observable, zip } from 'rxjs/index'
 
 import { Person } from '../app/person'
-import { Address} from '../app/address'
+import { Response }  from '../app/address'
 
 @Injectable()
 export class AppService  {
@@ -23,8 +23,8 @@ export class AppService  {
     )
   }
 
-  public getAddress(zipcode: string): Observable<any> {
-    return this.http.get<any>(`api/getAddress/${zipcode }`).pipe(
+  public getAddress(zipcode: string): Observable<Response> {
+    return this.http.get<Response>(`api/getAddress/${zipcode }`).pipe(
       map(response => response)
     )
   }

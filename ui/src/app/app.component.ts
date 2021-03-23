@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from './app.service';
 
 import { Person } from '../app/person'
-import { Address } from '../app/address'
+import { Response } from '../app/address'
 
 @Component({
   selector: 'app-root',
@@ -16,27 +16,24 @@ export class AppComponent {
     name: '',
     age:  null
   }
-  msg:   string
-  msgs:  string[] = []
+  msg:     string
+  msgs:    string[] = []
   zipcode: string
-  address: string
-  addresses: string[] = []
+  address: string[]
 
   constructor(private appService: AppService) { }
 
   addName(person: Person): void {
-    this.appService.getMessage(person).subscribe((data) => {
+    this.appService.getMessage(person).subscribe((data: any) => {
       this.msg = data.content
       this.msgs.push(this.msg)
     })
   }
 
   getAddress(zipcode: string): void {
-    this.appService.getAddress(zipcode).subscribe((data) => {
-     this.address = data.results.map(r => r.address2)
-     this.addresses.push(this.address)
-    })
-
-  }
-
+    this.appService.getAddress(zipcode).subscribe(
+      response => this.address = response.results.map(
+        r => r.address1 + r.address2 + r.address3),
+        err => alert(err)
+    )}
 }

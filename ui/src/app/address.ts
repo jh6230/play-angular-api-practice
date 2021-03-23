@@ -1,11 +1,15 @@
-export interface Address {
-  code: number;
-  message: string;
-  data: {
-      pref: string;
-      city: string;
-      town: string;
-      address: string;
-      fullAddress: string;
-  };
+export interface Response {
+  message: string
+  results: [{
+      address1: string;
+      address2: string;
+      address3: string
+      kana1: string;
+      kana2: string;
+      kana3: string;
+      prefcode: string;
+      zipcode: string;
+    }
+  ]
+  status:  number
 }
